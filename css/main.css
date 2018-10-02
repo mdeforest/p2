@@ -1,0 +1,29 @@
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.template-img {
+    width: 500px;
+}
+
+.templates {
+    list-style: none;
+}
+
+.templates > li > label > input {
+    visibility: hidden;
+    position: absolute;
+}
+
+.templates > li > label > input + img {
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.templates > li > label > input:checked + img {
+    border: 2px solid #f00;
+}
