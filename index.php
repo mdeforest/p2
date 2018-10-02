@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/main.css">
-    <script src='show-hide.js'></script>
+    <script src='js/show-hide.js'></script>
     <title>Resume Creator</title>
 </head>
 <body>
     <h1>Resume Creator</h1>
     <p>Create a Resume by choosing a template and filling out the required fields below</p>
 
-    <form method='POST' action='create.php'>
+    <form method='POST' action='logic/create.php'>
         <ul class='templates'>
             <li>
                 <label>
