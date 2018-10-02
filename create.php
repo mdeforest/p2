@@ -8,8 +8,9 @@ $template = $_POST['template'];
 $_SESSION['results'] = [
     'firstName' => $firstName,
     'lastName' => $lastName,
-    'template' => $template
 ];
+
+$_SESSION['template'] = $template;
 
 header('Location: done.php');
 
