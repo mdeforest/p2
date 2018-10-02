@@ -12,7 +12,7 @@ $_SESSION['results'] = [
 
 $_SESSION['template'] = $template;
 
-header('Location: done.php');
+header('Location: ../done.php');
 
 ?>
 
