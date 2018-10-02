@@ -1,4 +1,17 @@
 <?php
 session_start();
 
-header('Location: index.php');
+$firstName = $_POST['firstName'];
+$lastName = $_POST['lastName'];
+$template = $_POST['template'];
+
+$_SESSION['results'] = [
+    'firstName' => $firstName,
+    'lastName' => $lastName,
+    'template' => $template
+];
+
+header('Location: done.php');
+
+?>
+
