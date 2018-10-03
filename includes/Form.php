@@ -6,7 +6,7 @@ class Form
     /**
      * Properties
      */
-    private $request;
+    protected $request;
     public $hasErrors = false;
 
     /**
@@ -85,7 +85,9 @@ class Form
         }
 
         # Set public property hasErrors as Boolean
-        $this->hasErrors = !empty($errors);
+        if (!$this->hasErrors) {
+            $this->hasErrors = !empty($errors);
+        }
 
         return $errors;
     }
