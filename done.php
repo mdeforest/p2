@@ -12,7 +12,7 @@ require 'logic/done-logic.php';
 </head>
 <body>
 
-<?php readfile("templates/temp-1/temp-1.html"); ?>
+<?= $doc->saveHTML(); ?>
 
 </body>
 </html>
