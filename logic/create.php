@@ -1,5 +1,33 @@
 <?php
+require "../includes/Form.php";
+require "../includes/MyForm.php";
+
+use DWA\Form;
+use Resume\MyForm;
+
 session_start();
+
+$form = new MyForm($_POST);
+
+if ($form->isSubmitted()) {
+    $errors = $form->validate(
+        [
+            'template' => 'required',
+            'firstName' => 'required|alpha',
+            'lastName' => 'required|alpha',
+            'jobTitle' => 'required|alpha',
+            'city' => 'required',
+            'state' => 'required',
+            'email' => 'email',
+            'phoneNumber' => 'digit|minLength:10|maxLength:10',
+            'website' => 'url',
+            'summary' => 'required',
+            'additionalInfo' => 'required',
+        ]
+    );
+} else {
+    header("Location: index.php");
+}
 
 $template = $_POST['template'];
 
@@ -60,7 +88,7 @@ $_SESSION['results'] = [
     'additionalInfo' => $additionalInfo
 ];
 
-header('Location: ../done.php');
+#header('Location: ../done.php');
 
 ?>
 

@@ -1,7 +1,4 @@
 <?php
-require "../includes/Form.php";
-
-use DWA\Form;
 
 session_start();
 
