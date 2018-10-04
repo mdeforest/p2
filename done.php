@@ -1,5 +1,12 @@
 <?php
+require_once 'includes/dompdf/lib/html5lib/Parser.php';
+require_once 'includes/dompdf/lib/php-font-lib/src/FontLib/Autoloader.php';
+require_once 'includes/dompdf/lib/php-svg-lib/src/autoload.php';
+require_once 'includes/dompdf/src/Autoloader.php';
+Dompdf\Autoloader::register();
+
 require 'logic/done-logic.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +19,7 @@ require 'logic/done-logic.php';
 </head>
 <body>
 
-<?= $doc->saveHTML(); ?>
+<?= $htmlString ?>
 
 </body>
 </html>

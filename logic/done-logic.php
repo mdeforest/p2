@@ -1,8 +1,9 @@
 <?php
+use Dompdf\Dompdf;
 
 session_start();
 
-if (!isset($_SESSION['template']) | !isset($_SESSION['results'])) {
+if (!isset($_SESSION['template']) | !isset($_SESSION['results']) | !isset($_SESSION['output'])) {
     header('Location: index.php');
 }
 
@@ -19,6 +20,7 @@ if (!isset($_SESSION['education'])) {
 }
 
 $results = $_SESSION['results'];
+$output = $_SESSION['output'];
 
 $doc = new DOMDocument();
 $doc->loadHTMLFile('templates/' . $_SESSION["template"] . '/' . $_SESSION["template"] . '.html');
@@ -87,5 +89,20 @@ if (count($education) == 0) {
         }
     }
 }
+
+$htmlString = $doc->saveHTML();
+
+if ($output == 'pdf') {
+    $filename = strtolower($results['firstName']).'-'.strtolower($results['lastName']).'-resume.pdf';
+
+    $domPdf = new Dompdf();
+    $domPdf->loadHtml($htmlString);
+    $domPdf->render();
+    $domPdf->stream($filename, array("Attachment" => false));
+
+    session_unset();
+    exit();
+}
+
 
 session_unset();
