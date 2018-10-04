@@ -22,7 +22,8 @@ if ($form->isSubmitted()) {
         'phoneNumber' => 'digit|minLength:10|maxLength:10',
         'website' => 'url',
         'summary' => 'required',
-        'additionalInfo' => 'required'
+        'additionalInfo' => 'required',
+        'output' => 'required'
     ];
 
     if (isset($_POST['experience'])) {
@@ -52,6 +53,7 @@ if ($form->isSubmitted()) {
     $errors = $form->validate($fields);
 
     if ($form->hasErrors) {
+        $_SESSION['errors'] = $errors;
         header('Location: ../index.php');
         exit();
     }
@@ -60,15 +62,16 @@ if ($form->isSubmitted()) {
 }
 
 $template = $form->get('template');
+$output = $form->get('output');
 
 $firstName = $form->get('firstName');
 $lastName = $form->get('lastName');
 $jobTitle = $form->get('jobTitle');
 $city = $form->get('city');
 $state = $form->get('state');
-$email = $form->get('email');
-$phoneNumber = $form->get('phoneNumber');
-$website = $form->get('website');
+$email = $form->get('email', '');
+$phoneNumber = $form->get('phoneNumber', '');
+$website = $form->get('website', '');
 $summary = $form->get('summary');
 $additionalInfo = $form->get('additionalInfo');
 
@@ -102,6 +105,7 @@ if (isset($_POST['education'])) {
 }
 
 $_SESSION['template'] = $template;
+$_SESSION['output'] = $output;
 $_SESSION['experience'] = $experience;
 $_SESSION['education'] = $education;
 
