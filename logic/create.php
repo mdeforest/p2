@@ -81,26 +81,26 @@ $education = [];
 if (isset($_POST['experience'])) {
     for ($i = 0; $i < count($form->get('experience|jobTitle')); $i++) {
         array_push($experience, []);
-        $experience[$i]['jobTitle'] = $form->get('experience|jobTitle'.$i);
-        $experience[$i]['company'] = $form->get('experience|company'.$i);
-        $experience[$i]['location'] = $form->get('experience|location'.$i);
-        $experience[$i]['fromMonth'] = $form->get('experience|fromMonth'.$i);
-        $experience[$i]['fromYear'] = $form->get('experience|fromYear'.$i);
-        $experience[$i]['toMonth'] = $form->get('experience|toMonth'.$i);
-        $experience[$i]['toYear'] = $form->get('experience|toYear'.$i);
-        $experience[$i]['html-content'] = $form->get('experience|html-content'.$i);
+        $experience[$i]['jobTitle'] = $form->get('experience|jobTitle|'.$i);
+        $experience[$i]['company'] = $form->get('experience|company|'.$i);
+        $experience[$i]['location'] = $form->get('experience|location|'.$i);
+        $experience[$i]['fromMonth'] = $form->get('experience|fromMonth|'.$i);
+        $experience[$i]['fromYear'] = $form->get('experience|fromYear|'.$i);
+        $experience[$i]['toMonth'] = $form->get('experience|toMonth|'.$i);
+        $experience[$i]['toYear'] = $form->get('experience|toYear|'.$i);
+        $experience[$i]['html-content'] = $form->get('experience|html-content|'.$i);
     }
 }
 
 if (isset($_POST['education'])) {
     for ($i = 0; $i < count($form->get('education|degree')); $i++) {
         array_push($education, []);
-        $education[$i]['degree'] = $form->get('education|degree'.$i);
-        $education[$i]['where'] = $form->get('education|where'.$i);
-        $education[$i]['location'] = $form->get('education|location'.$i);
-        $education[$i]['fromYear'] = $form->get('education|fromYear'.$i);
-        $education[$i]['toYear'] = $form->get('education|toYear'.$i);
-        $education[$i]['html-content'] = $form->get('education|html-content'.$i);
+        $education[$i]['degree'] = $form->get('education|degree|'.$i);
+        $education[$i]['where'] = $form->get('education|where|'.$i);
+        $education[$i]['location'] = $form->get('education|location|'.$i);
+        $education[$i]['fromYear'] = $form->get('education|fromYear|'.$i);
+        $education[$i]['toYear'] = $form->get('education|toYear|'.$i);
+        $education[$i]['html-content'] = $form->get('education|html-content|'.$i);
     }
 }
 
