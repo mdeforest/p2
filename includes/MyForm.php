@@ -9,7 +9,7 @@ class MyForm extends Form
      * Get a value from the request, with the option of including a default
      * if the value is not set; name is an array to allow multiple depths
      */
-    public function get($name, $default = null)
+    public function get($name, $default = '')
     {
         $field = explode('|', $name);
         $curRequest = $this->request;
