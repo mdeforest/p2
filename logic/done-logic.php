@@ -21,12 +21,12 @@ if (!isset($_SESSION['education'])) {
 $results = $_SESSION['results'];
 
 $doc = new DOMDocument();
-$doc->loadHTMLFile('templates/'.$_SESSION["template"].'/'.$_SESSION["template"].'.html');
+$doc->loadHTMLFile('templates/' . $_SESSION["template"] . '/' . $_SESSION["template"] . '.html');
 
 $xpath = new DOMXPath($doc);
 
 foreach ($results as $key => $value) {
-    $query = "//*[contains(concat(' ',normalize-space(@class),' '),' ".$key." ') and not(ancestor-or-self::*[@data-category='experience']) and not(ancestor-or-self::*[@data-category='education'])]";
+    $query = "//*[contains(concat(' ',normalize-space(@class),' '),' " . $key . " ') and not(ancestor-or-self::*[@data-category='experience']) and not(ancestor-or-self::*[@data-category='education'])]";
     $node = $xpath->query($query);
 
     foreach ($node as $item) {
@@ -55,7 +55,6 @@ if (count($experience) == 0) {
         if ($i < count($experience) - 1) {
             $duplicate = $node->item(0)->cloneNode(true);
             $node->item(0)->parentNode->appendChild($duplicate);
-
         } else {
             $node->item(0)->attributes->item(0)->nodeValue = "last-child";
         }
@@ -83,14 +82,10 @@ if (count($education) == 0) {
         if ($i < count($education) - 1) {
             $duplicate = $node->item(0)->cloneNode(true);
             $node->item(0)->parentNode->appendChild($duplicate);
-
         } else {
             $node->item(0)->attributes->item(0)->nodeValue = "last-child";
         }
     }
 }
-
-
-
 
 session_unset();

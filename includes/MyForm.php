@@ -18,7 +18,6 @@ class MyForm extends Form
         }
 
         return $curRequest[0];
-
     }
 
     /**

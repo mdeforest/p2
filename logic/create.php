@@ -88,7 +88,7 @@ $_SESSION['results'] = [
     'additionalInfo' => $additionalInfo
 ];
 
-#header('Location: ../done.php');
+header('Location: ../done.php');
 
 ?>
 
