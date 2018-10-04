@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -131,8 +133,28 @@
                   name='additionalInfo'></textarea>
     </label>
 
+
+    <label for='output'>Display Type
+        <select name='output'>
+            <option value='html' selected>HTML</option>
+            <option value='pdf'>PDF</option>
+        </select>
+    </label>
+
     <input type='submit' value='Create'>
 </form>
+
+<?php if (isset($_SESSION['errors'])) : ?>
+    <div>
+        <ul>
+            <?php foreach ($_SESSION['errors'] as $error) : ?>
+                <li><?= $error ?></li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+
+    <?php $_SESSION['errors'] = null; ?>
+<?php endif; ?>
 
 </body>
 </html>
