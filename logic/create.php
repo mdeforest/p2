@@ -26,77 +26,78 @@ if ($form->isSubmitted()) {
     ];
 
     if (isset($_POST['experience'])) {
-        for ($i = 0; $i < count($_POST['experience']['jobTitle']); $i++) {
-            $fields['experience|jobTitle|' . $i] = 'required|alpha';
-            $fields['experience|company|' . $i] = 'required';
-            $fields['experience|location|' . $i] = 'required';
-            $fields['experience|fromMonth|' . $i] = 'required';
-            $fields['experience|fromYear|' . $i] = 'required';
-            $fields['experience|toMonth|' . $i] = 'required';
-            $fields['experience|toYear|' . $i] = 'required';
-            $fields['experience|html-content|' . $i] = 'required';
+        for ($i = 0; $i < count($form->get('experience|jobTitle')); $i++) {
+            $fields['experience|jobTitle|'.$i] = 'required|alpha';
+            $fields['experience|company|'.$i] = 'required';
+            $fields['experience|location|'.$i] = 'required';
+            $fields['experience|fromMonth|'.$i] = 'required';
+            $fields['experience|fromYear|'.$i] = 'required';
+            $fields['experience|toMonth|'.$i] = 'required';
+            $fields['experience|toYear|'.$i] = 'required';
+            $fields['experience|html-content|'.$i] = 'required';
         }
     }
 
     if (isset($_POST['education'])) {
         for ($i = 0; $i < count($_POST['education']['degree']); $i++) {
-            $fields['education|degree|' . $i] = 'required|alpha';
-            $fields['education|where|' . $i] = 'required';
-            $fields['education|location|' . $i] = 'required';
-            $fields['education|fromYear|' . $i] = 'required';
-            $fields['education|toYear|' . $i] = 'required';
-            $fields['education|html-content|' . $i] = 'required';
+            $fields['education|degree|'.$i] = 'required|alpha';
+            $fields['education|where|'.$i] = 'required';
+            $fields['education|location|'.$i] = 'required';
+            $fields['education|fromYear|'.$i] = 'required';
+            $fields['education|toYear|'.$i] = 'required';
+            $fields['education|html-content|'.$i] = 'required';
         }
     }
 
     $errors = $form->validate($fields);
+
+    if ($form->hasErrors) {
+        header('Location: ../index.php');
+        exit();
+    }
 } else {
-    header("Location: index.php");
+    header("Location: ../index.php");
 }
 
-var_dump($fields);
-echo "<br>";
-var_dump($errors);
+$template = $form->get('template');
 
-$template = $_POST['template'];
-
-$firstName = $_POST['firstName'];
-$lastName = $_POST['lastName'];
-$jobTitle = $_POST['jobTitle'];
-$city = $_POST['city'];
-$state = $_POST['state'];
-$email = $_POST['email'];
-$phoneNumber = $_POST['phoneNumber'];
-$website = $_POST['website'];
-$summary = $_POST['summary'];
-$additionalInfo = $_POST['additionalInfo'];
+$firstName = $form->get('firstName');
+$lastName = $form->get('lastName');
+$jobTitle = $form->get('jobTitle');
+$city = $form->get('city');
+$state = $form->get('state');
+$email = $form->get('email');
+$phoneNumber = $form->get('phoneNumber');
+$website = $form->get('website');
+$summary = $form->get('summary');
+$additionalInfo = $form->get('additionalInfo');
 
 $experience = [];
 $education = [];
 
 if (isset($_POST['experience'])) {
-    for ($i = 0; $i < count($_POST['experience']['jobTitle']); $i++) {
+    for ($i = 0; $i < count($form->get('experience|jobTitle')); $i++) {
         array_push($experience, []);
-        $experience[$i]['jobTitle'] = $_POST['experience']['jobTitle'][$i];
-        $experience[$i]['company'] = $_POST['experience']['company'][$i];
-        $experience[$i]['location'] = $_POST['experience']['location'][$i];
-        $experience[$i]['fromMonth'] = $_POST['experience']['fromMonth'][$i];
-        $experience[$i]['fromYear'] = $_POST['experience']['fromYear'][$i];
-        $experience[$i]['toMonth'] = $_POST['experience']['toMonth'][$i];
-        $experience[$i]['toYear'] = $_POST['experience']['toYear'][$i];
-        $experience[$i]['html-content'] = $_POST['experience']['html-content'][$i];
+        $experience[$i]['jobTitle'] = $form->get('experience|jobTitle'.$i);
+        $experience[$i]['company'] = $form->get('experience|company'.$i);
+        $experience[$i]['location'] = $form->get('experience|location'.$i);
+        $experience[$i]['fromMonth'] = $form->get('experience|fromMonth'.$i);
+        $experience[$i]['fromYear'] = $form->get('experience|fromYear'.$i);
+        $experience[$i]['toMonth'] = $form->get('experience|toMonth'.$i);
+        $experience[$i]['toYear'] = $form->get('experience|toYear'.$i);
+        $experience[$i]['html-content'] = $form->get('experience|html-content'.$i);
     }
 }
 
 if (isset($_POST['education'])) {
-    for ($i = 0; $i < count($_POST['education']['degree']); $i++) {
+    for ($i = 0; $i < count($form->get('education|degree')); $i++) {
         array_push($education, []);
-        $education[$i]['degree'] = $_POST['education']['degree'][$i];
-        $education[$i]['where'] = $_POST['education']['where'][$i];
-        $education[$i]['location'] = $_POST['education']['location'][$i];
-        $education[$i]['fromYear'] = $_POST['education']['fromYear'][$i];
-        $education[$i]['toYear'] = $_POST['education']['toYear'][$i];
-        $education[$i]['html-content'] = $_POST['education']['html-content'][$i];
+        $education[$i]['degree'] = $form->get('education|degree'.$i);
+        $education[$i]['where'] = $form->get('education|where'.$i);
+        $education[$i]['location'] = $form->get('education|location'.$i);
+        $education[$i]['fromYear'] = $form->get('education|fromYear'.$i);
+        $education[$i]['toYear'] = $form->get('education|toYear'.$i);
+        $education[$i]['html-content'] = $form->get('education|html-content'.$i);
     }
 }
 
@@ -118,6 +119,7 @@ $_SESSION['results'] = [
 ];
 
 header('Location: ../done.php');
+
 
 ?>
 
