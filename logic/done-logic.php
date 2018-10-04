@@ -51,7 +51,7 @@ if (count($experience) == 0) {
             $node[0]->nodeValue = $value;
         }
 
-        $query = "(//div[@data-category='experience']//div//div)[last()]";
+        $query = "(//div[@data-category='experience']//div//div[@data-category='experience'])[last()]";
         $node = $xpath->query($query);
 
         if ($i < count($experience) - 1) {
@@ -78,7 +78,7 @@ if (count($education) == 0) {
             $node[0]->nodeValue = $value;
         }
 
-        $query = "(//div[@data-category='education']//div//div)[last()]";
+        $query = "(//div[@data-category='experience']//div//div[@data-category='experience'])[last()]";
         $node = $xpath->query($query);
 
         if ($i < count($education) - 1) {
