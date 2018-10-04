@@ -152,14 +152,12 @@ function addExperience(element) {
                 <option value="Oct">October</option>
                 <option value="Nov">November</option>
                 <option value="Dec">December</option>
-                <option value=''>Present</option>
             </select>
         </label>     
 
         <label class='temp-1 temp-2 show' for='experience[toYear][]'>Year End
             <select name='experience[toYear][]'>
                 <option value="2018" selected>2018</option>
-                <option value='Present'>Present</option>
                 <option value="2017">2017</option>
                 <option value="2016">2016</option>
                 <option value="2015">2015</option>
