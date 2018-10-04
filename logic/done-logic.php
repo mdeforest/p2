@@ -1,4 +1,5 @@
 <?php
+
 use Dompdf\Dompdf;
 
 session_start();
@@ -93,16 +94,15 @@ if (count($education) == 0) {
 $htmlString = $doc->saveHTML();
 
 if ($output == 'pdf') {
-    $filename = strtolower($results['firstName']).'-'.strtolower($results['lastName']).'-resume.pdf';
+    $filename = strtolower($results['firstName']) . '-' . strtolower($results['lastName']) . '-resume.pdf';
 
     $domPdf = new Dompdf();
     $domPdf->loadHtml($htmlString);
     $domPdf->render();
-    $domPdf->stream($filename, array("Attachment" => false));
+    $domPdf->stream($filename, ["Attachment" => false]);
 
     session_unset();
     exit();
 }
-
 
 session_unset();
