@@ -22,15 +22,15 @@ function addExperience(element) {
     var htmldata = `
         <button type='button' onclick='deleteDiv(this.parentNode)'>-</button>
         <label class="temp-1 temp-2 show" for='experience[jobTitle][]'>Job Title
-            <input type='text' name='experience[jobTitle][]'>
+            <input type='text' name='experience[jobTitle][]' value=''>
         </label>
         
         <label class="temp-1 temp-2 show" for='experience[company][]'>Company
-            <input type='text' name='experience[company][]'>
+            <input type='text' name='experience[company][]' value=''>
         </label>
 
         <label class="temp-1 temp-2 show" for='experience[location][]'>Location
-            <input type='text' name='experience[location][]'>
+            <input type='text' name='experience[location][]' value=''>
         </label> 
         
         <label class='temp-1 temp-2 show' for='experience[fromMonth][]'>Month Start
@@ -244,15 +244,15 @@ function addEducation(element) {
     var htmldata = `
         <button type='button' onclick='deleteDiv(this.parentNode)'>-</button>
         <label class="temp-1 temp-2 show" for='education[degree][]'>Degree
-            <input type='text' name='education[degree][]'>
+            <input type='text' name='education[degree][]' value=''>
         </label>
         
         <label class="temp-1 temp-2 show" for='education[where][]'>School
-            <input type='text' name='education[where][]'>
+            <input type='text' name='education[where][]' value=''>
         </label>
 
         <label class="temp-1 temp-2 show" for='experience[location][]'>Location
-            <input type='text' name='experience[location][]'>
+            <input type='text' name='experience[location][]' value=''>
         </label>     
 
         <label class='temp-1 temp-2 show' for='education[fromYear][]'>Year Start
