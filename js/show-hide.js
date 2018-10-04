@@ -251,7 +251,7 @@ function addEducation(element) {
             <input type='text' name='education[where][]' value=''>
         </label>
 
-        <label class="temp-1 temp-2 show" for='experience[location][]'>Location
+        <label class="temp-1 temp-2 show" for='education[location][]'>Location
             <input type='text' name='education[location][]' value=''>
         </label>     
 
@@ -414,7 +414,7 @@ function addEducation(element) {
             </select>
         </label>    
 
-        <label class="temp-1 temp-2 show" for='experience[html-content][]'>Summary
+        <label class="temp-1 temp-2 show" for='education[html-content][]'>Summary
             <textarea placeholder='(Optional) GPA, Awards, Honors' name='education[html-content][]'></textarea>
         </label>
     `;
