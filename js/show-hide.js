@@ -1,3 +1,6 @@
+/*
+ * shows and hides classes based on template chosen by radio buttons
+ */
 function handleRadio(element, template) {
     var elements = document.getElementsByClassName(template);
     if (element.checked) {
@@ -13,10 +16,16 @@ function handleRadio(element, template) {
     }
 }
 
+/*
+ * Removes div associated with element
+ */
 function deleteDiv(element) {
     element.parentNode.removeChild(element);
 }
 
+/*
+ * Adds div of form data for experience in Resume
+ */
 function addExperience(element) {
     var e = document.createElement('div');
     var htmldata = `
@@ -239,6 +248,9 @@ function addExperience(element) {
 
 }
 
+/*
+ * Adds div of form data for education in Resume
+ */
 function addEducation(element) {
     var e = document.createElement('div');
     var htmldata = `

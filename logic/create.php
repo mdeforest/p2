@@ -10,6 +10,9 @@ session_start();
 $form = new MyForm($_POST);
 
 if ($form->isSubmitted()) {
+    // set fields to be validated
+    // experience and education must be done like this because they are at a deeper level
+
     $fields =
         [
             'template' => 'required',
@@ -50,16 +53,22 @@ if ($form->isSubmitted()) {
         }
     }
 
+    // Validate form
     $errors = $form->validate($fields);
 
     if ($form->hasErrors) {
+        // There are errors so return back to index and display them
         $_SESSION['errors'] = $errors;
         header('Location: ../index.php');
         exit();
     }
 } else {
+    // The form hasn't been submitted so return to index
     header("Location: ../index.php");
 }
+
+// Set variables from _POST
+// education and experience are different like before
 
 $template = $form->get('template');
 $output = $form->get('output');
@@ -104,6 +113,8 @@ if (isset($_POST['education'])) {
     }
 }
 
+// Set fields in _SESSION
+
 $_SESSION['template'] = $template;
 $_SESSION['output'] = $output;
 $_SESSION['experience'] = $experience;
@@ -122,6 +133,7 @@ $_SESSION['results'] = [
     'additionalInfo' => $additionalInfo
 ];
 
+// Redirect to done page where resume will be displayed
 header('Location: ../done.php');
 
 ?>

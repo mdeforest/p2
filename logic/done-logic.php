@@ -4,10 +4,12 @@ use Dompdf\Dompdf;
 
 session_start();
 
+// Return to index if the template, results, our output are not set in _SESSION
 if (!isset($_SESSION['template']) | !isset($_SESSION['results']) | !isset($_SESSION['output'])) {
     header('Location: index.php');
 }
 
+// Necessary to make experience or education an empty list instead of unset
 if (!isset($_SESSION['experience'])) {
     $experience = [];
 } else {
@@ -23,6 +25,7 @@ if (!isset($_SESSION['education'])) {
 $results = $_SESSION['results'];
 $output = $_SESSION['output'];
 
+// Fill out template using XPath notation
 $doc = new DOMDocument();
 $doc->loadHTMLFile('templates/' . $_SESSION["template"] . '/' . $_SESSION["template"] . '.html');
 
@@ -93,6 +96,7 @@ if (count($education) == 0) {
 
 $htmlString = $doc->saveHTML();
 
+// Display pdf if pdf option chosen
 if ($output == 'pdf') {
     $filename = strtolower($results['firstName']) . '-' . strtolower($results['lastName']) . '-resume.pdf';
 
