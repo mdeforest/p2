@@ -252,7 +252,7 @@ function addEducation(element) {
         </label>
 
         <label class="temp-1 temp-2 show" for='experience[location][]'>Location
-            <input type='text' name='experience[location][]' value=''>
+            <input type='text' name='education[location][]' value=''>
         </label>     
 
         <label class='temp-1 temp-2 show' for='education[fromYear][]'>Year Start
