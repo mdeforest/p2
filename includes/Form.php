@@ -30,7 +30,7 @@ class Form
      * Get a value from the request, with the option of including a default
      * if the value is not set.
      */
-    public function get(string $name, string $default = null)
+    public function get($name, $default = null)
     {
         return $this->request[$name] ?? $default;
     }
@@ -38,7 +38,7 @@ class Form
     /**
      * Returns boolean as to whether a value is present in the request
      */
-    public function has(string $name)
+    public function has($name)
     {
         return isset($this->request[$name]);
     }
@@ -85,9 +85,7 @@ class Form
         }
 
         # Set public property hasErrors as Boolean
-        if (!$this->hasErrors) {
-            $this->hasErrors = !empty($errors);
-        }
+        $this->hasErrors = !empty($errors);
 
         return $errors;
     }
