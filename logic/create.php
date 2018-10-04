@@ -10,24 +10,53 @@ session_start();
 $form = new MyForm($_POST);
 
 if ($form->isSubmitted()) {
-    $errors = $form->validate(
-        [
-            'template' => 'required',
-            'firstName' => 'required|alpha',
-            'lastName' => 'required|alpha',
-            'jobTitle' => 'required|alpha',
-            'city' => 'required',
-            'state' => 'required',
-            'email' => 'email',
-            'phoneNumber' => 'digit|minLength:10|maxLength:10',
-            'website' => 'url',
-            'summary' => 'required',
-            'additionalInfo' => 'required',
-        ]
-    );
+    $fields =
+    [
+        'template' => 'required',
+        'firstName' => 'required|alpha',
+        'lastName' => 'required|alpha',
+        'jobTitle' => 'required|alpha',
+        'city' => 'required',
+        'state' => 'required',
+        'email' => 'email',
+        'phoneNumber' => 'digit|minLength:10|maxLength:10',
+        'website' => 'url',
+        'summary' => 'required',
+        'additionalInfo' => 'required'
+    ];
+
+    if (isset($_POST['experience'])) {
+        for ($i = 0; $i < count($_POST['experience']['jobTitle']); $i++) {
+            $fields['experience|jobTitle|' . $i] = 'required|alpha';
+            $fields['experience|company|' . $i] = 'required';
+            $fields['experience|location|' . $i] = 'required';
+            $fields['experience|fromMonth|' . $i] = 'required';
+            $fields['experience|fromYear|' . $i] = 'required';
+            $fields['experience|toMonth|' . $i] = 'required';
+            $fields['experience|toYear|' . $i] = 'required';
+            $fields['experience|html-content|' . $i] = 'required';
+        }
+    }
+
+    if (isset($_POST['education'])) {
+        for ($i = 0; $i < count($_POST['education']['degree']); $i++) {
+            $fields['education|degree|' . $i] = 'required|alpha';
+            $fields['education|where|' . $i] = 'required';
+            $fields['education|location|' . $i] = 'required';
+            $fields['education|fromYear|' . $i] = 'required';
+            $fields['education|toYear|' . $i] = 'required';
+            $fields['education|html-content|' . $i] = 'required';
+        }
+    }
+
+    $errors = $form->validate($fields);
 } else {
     header("Location: index.php");
 }
+
+var_dump($fields);
+echo "<br>";
+var_dump($errors);
 
 $template = $_POST['template'];
 
