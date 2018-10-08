@@ -1,7 +1,10 @@
 <?php session_start(); ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,6 +12,7 @@
     <script src='js/show-hide.js'></script>
     <title>Resume Creator</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
 </head>
 <body>
 <div class='container'>
@@ -16,7 +20,7 @@
         <img src='images/logo.png'>
         <p id='instructions'>Create a Resume by choosing a template and filling out the required fields below</p>
         <div class='button-container'>
-            <a class='start' href='#choose-template'>Let's Go!</a>
+            <a class='button' href='#choose-template'>Let's Go!</a>
         </div>
     </section>
     <form class='form' method='POST' action='logic/create.php'>
@@ -27,13 +31,13 @@
             <p>Choose a Template</p>
             <div class='templates'>
                 <div class='column'>
-                    <input type='radio' name='template' id='temp-1' onclick="handleRadio(this, 'temp-1')" value='temp-1'>
+                    <input type='radio' name='template' id='temp-1' value='temp-1'>
                     <label for='temp-1'>
                         <img class="template-img" src='templates/temp-1/temp-1.png'>
                     </label>
                 </div>
                 <div class='column'>
-                    <input type='radio' name='template' id='temp-2' onclick="handleRadio(this, 'temp-2')" value='temp-2'>
+                    <input type='radio' name='template' id='temp-2' value='temp-2'>
                     <label for='temp-2'>
                         <img class="template-img" src='templates/temp-2/temp-2.png'>
                     </label>
@@ -43,29 +47,31 @@
                 <div class='arrow-down'></div>
             </a>
         </section>
-
         <section id='basic-info'>
             <a href='#choose-template'>
                 <div class='arrow-up'></div>
             </a>
             <p>Basic Information</p>
-            <label class="temp-1 temp-2 hide" for='firstName'>First Name
+            <fieldset>
+                <label for='firstName'>First Name</label>
                 <input type='text' name='firstName'>
-            </label>
-
-            <label class="temp-1 temp-2 hide" for='lastName'>Last Name
+            </fieldset>
+            <fieldset>
+                <label for='lastName'>Last Name</label>
                 <input type='text' name='lastName'>
-            </label>
-
-            <label class="temp-1 temp-2 hide" for='jobTitle'>Profession
+            </fieldset>
+            <div class='clearfix'></div>
+            <fieldset>
+                <label for='jobTitle'>Profession</label>
                 <input type='text' name='jobTitle'>
-            </label>
-
-            <label class='temp-1 temp-2 hide' for='city'>City
+            </fieldset>
+            <div class='clearfix'></div>
+            <fieldset>
+                <label for='city'>City</label>
                 <input type='text' name='city'>
-            </label>
-
-            <label class='temp-1 temp-2 hide' for='state'>State
+            </fieldset>
+            <fieldset>
+                <label for='state'>State</label>
                 <select name='state'>
                     <option value="AL" selected>Alabama</option>
                     <option value="AK">Alaska</option>
@@ -119,19 +125,22 @@
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
                 </select>
-            </label>
-
-            <label class="temp-1 temp-2 hide" for='email'>Email
+            </fieldset>
+            <div class='clearfix'></div>
+            <fieldset>
+                <label for='email'>Email</label>
                 <input type='email' name='email'>
-            </label>
-
-            <label class="temp-1 hide" for='phoneNumber'>Phone Number
+            </fieldset>
+            <fieldset>
+                <label for='phoneNumber'>Phone Number</label>
                 <input type='text' name='phoneNumber'>
-            </label>
-
-            <label class="temp-1 temp-2 hide" for='website'>Website
+            </fieldset>
+            <div class='clearfix'></div>
+            <fieldset>
+                <label for='website'>Website</label>
                 <input type='text' name='website'>
-            </label>
+            </fieldset>
+            <div class='clearfix'></div>
             <a href='#summary'>
                 <div class='arrow-down'></div>
             </a>
@@ -156,7 +165,10 @@
                 <div class='arrow-up'></div>
             </a>
             <p>Work Experience</p>
-            <button type='button' onclick='addExperience(this.parentNode)'>+</button>
+            <div class='button-container'>
+                <button type='button' class='button' onclick='addExperience()'>Add</button>
+            </div>
+            <div id='experiences'></div>
             <a href='#education-info'>
                 <div class='arrow-down'></div>
             </a>
@@ -167,7 +179,10 @@
                 <div class='arrow-up'></div>
             </a>
             <p>Education</p>
-            <button type='button' onclick='addEducation(this.parentNode)'>+</button>
+            <div class='button-container'>
+                <button type='button' class='button' onclick='addEducation()'>Add</button>
+            </div>
+            <div id='degrees'></div>
             <a href='#additional-info'>
                 <div class='arrow-down'></div>
             </a>
@@ -178,7 +193,7 @@
                 <div class='arrow-up'></div>
             </a>
             <p>Additional Information</p>
-            <label class='temp-1 temp-2 hide' for='additionalInfo'>
+            <label for='additionalInfo'>
                 <textarea placeholder='Include other relevant information that employers should know about. This may include activities, experiences and interests that you have that relate to the position you are trying to get'
                           name='additionalInfo'></textarea>
             </label>

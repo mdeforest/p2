@@ -1,22 +1,4 @@
 /*
- * shows and hides classes based on template chosen by radio buttons
- */
-function handleRadio(element, template) {
-    var elements = document.getElementsByClassName(template);
-    if (element.checked) {
-        for (var i = 0; i < elements.length; i++) {
-            elements[i].classList.add("show");
-            elements[i].classList.remove("hide");
-        }
-    } else {
-        for (var i = 0; i < elements.length; i++) {
-            elements[i].classList.remove("show");
-            elements[i].classList.add("hide");
-        }
-    }
-}
-
-/*
  * Removes div associated with element
  */
 function deleteDiv(element) {
@@ -27,22 +9,29 @@ function deleteDiv(element) {
  * Adds div of form data for experience in Resume
  */
 function addExperience(element) {
+    var experiences = document.getElementById('experiences');
     var e = document.createElement('div');
     var htmldata = `
-        <button type='button' onclick='deleteDiv(this.parentNode)'>-</button>
-        <label class="temp-1 temp-2 show" for='experience[jobTitle][]'>Job Title
+        <div class='button-container'>
+            <button type='button' class='button' onclick='deleteDiv(this.parentNode.parentNode)'>Remove</button>
+        </div>
+        <div class='clearfix'></div>
+        <fieldset>
+            <label for='experience[jobTitle][]'>Job Title</label>
             <input type='text' name='experience[jobTitle][]' value=''>
-        </label>
-        
-        <label class="temp-1 temp-2 show" for='experience[company][]'>Company
+        </fieldset>
+        <fieldset>
+            <label for='experience[company][]'>Company</label>
             <input type='text' name='experience[company][]' value=''>
-        </label>
-
-        <label class="temp-1 temp-2 show" for='experience[location][]'>Location
+        </fieldset>
+        <div class='clearfix'></div>
+        <fieldset>
+            <label for='experience[location][]'>Location</label>
             <input type='text' name='experience[location][]' value=''>
-        </label> 
-        
-        <label class='temp-1 temp-2 show' for='experience[fromMonth][]'>Month Start
+        </fieldset> 
+        <div class='clearfix'></div>
+        <fieldset>
+            <label for='experience[fromMonth][]'>Month Start</label>
             <select name='experience[fromMonth][]'>
                 <option value="Jan" selected>January</option>
                 <option value="Feb">February</option>
@@ -57,9 +46,9 @@ function addExperience(element) {
                 <option value="Nov">November</option>
                 <option value="Dec">December</option>
             </select>
-        </label>     
-
-        <label class='temp-1 temp-2 show' for='experience[fromYear][]'>Year Start
+        </fieldset>     
+        <fieldset>
+            <label for='experience[fromYear][]'>Year Start</label>
             <select name='experience[fromYear][]'>
                 <option value="2018" selected>2018</option>
                 <option value="2017">2017</option>
@@ -136,9 +125,10 @@ function addExperience(element) {
                 <option value="1946">1946</option>
                 <option value="1945">1945</option>
             </select>
-        </label>     
-
-        <label class='temp-1 temp-2 show' for='experience[toMonth][]'>Month End
+        </fieldset>  
+        <div class='clearfix'></div>   
+        <fieldset>
+            <label for='experience[toMonth][]'>Month End</label>
             <select name='experience[toMonth][]'>
                 <option value="Jan" selected>January</option>
                 <option value="Feb">February</option>
@@ -153,9 +143,9 @@ function addExperience(element) {
                 <option value="Nov">November</option>
                 <option value="Dec">December</option>
             </select>
-        </label>     
-
-        <label class='temp-1 temp-2 show' for='experience[toYear][]'>Year End
+        </fieldset>     
+        <fieldset>
+            <label for='experience[toYear][]'>Year End</label>
             <select name='experience[toYear][]'>
                 <option value="2018" selected>2018</option>
                 <option value="2017">2017</option>
@@ -232,40 +222,46 @@ function addExperience(element) {
                 <option value="1946">1946</option>
                 <option value="1945">1945</option>
             </select>
-        </label>    
-
-        <label class="temp-1 temp-2 show" for='experience[html-content][]'>Summary
-            <textarea placeholder='Describe your job responsibilities, accomplishments and technologies you have used' name='experience[html-content][]'></textarea>
-        </label>
+        </fieldset>    
+        <div class='clearfix'></div>
+        <fieldset class='full-width'>
+            <label for='experience[html-content][]'>Summary</label>
+            <textarea class='no-margin' placeholder='Describe your job responsibilities, accomplishments and technologies you have used' name='experience[html-content][]'></textarea>
+        </fieldset>
+        <div class='clearfix'></div>
     `;
 
     e.classList.add("experience");
 
     e.innerHTML = htmldata;
-    element.appendChild(e);
+    experiences.appendChild(e);
 
 }
 
 /*
  * Adds div of form data for education in Resume
  */
-function addEducation(element) {
+function addEducation() {
+    var degrees = document.getElementById('degrees');
     var e = document.createElement('div');
     var htmldata = `
-        <button type='button' onclick='deleteDiv(this.parentNode)'>-</button>
-        <label class="temp-1 temp-2 show" for='education[degree][]'>Degree
+        <div class='button-container'>
+            <button type='button' onclick='deleteDiv(this.parentNode.parentNode)'>-</button>
+        </div>
+        <fieldset>
+            <label for='education[degree][]'>Degree</label>
             <input type='text' name='education[degree][]' value=''>
-        </label>
-        
-        <label class="temp-1 temp-2 show" for='education[where][]'>School
+        </fieldset>
+        <fieldset>
+            <label for='education[where][]'>School</label>
             <input type='text' name='education[where][]' value=''>
-        </label>
-
-        <label class="temp-1 temp-2 show" for='education[location][]'>Location
+        </fieldset>
+        <fieldset>
+            <label for='education[location][]'>Location</label>
             <input type='text' name='education[location][]' value=''>
-        </label>     
-
-        <label class='temp-1 temp-2 show' for='education[fromYear][]'>Year Start
+        </fieldset>     
+        <fieldset>
+            <label for='education[fromYear][]'>Year Start</label>
             <select name='education[fromYear][]'>
                 <option value="2018" selected>2018</option>
                 <option value="2017">2017</option>
@@ -342,9 +338,9 @@ function addEducation(element) {
                 <option value="1946">1946</option>
                 <option value="1945">1945</option>
             </select>
-        </label>   
-
-        <label class='temp-1 temp-2 show' for='education[toYear][]'>Year End
+        </fieldset>   
+        <fieldset>
+            <label for='education[toYear][]'>Year End</label>
             <select name='education[toYear][]'>
                 <option value="2018" selected>2018</option>
                 <option value='Present'>Present</option>
@@ -422,16 +418,17 @@ function addEducation(element) {
                 <option value="1946">1946</option>
                 <option value="1945">1945</option>
             </select>
-        </label>    
-
-        <label class="temp-1 temp-2 show" for='education[html-content][]'>Summary
-            <textarea placeholder='(Optional) GPA, Awards, Honors' name='education[html-content][]'></textarea>
-        </label>
+        </fieldset>    
+        <fieldset class='full-width'>
+            <label for='education[html-content][]'>Summary</label>
+            <textarea class='no-margin' placeholder='(Optional) GPA, Awards, Honors' name='education[html-content][]'></textarea>
+        </fieldset>
+        <div class='clearfix'></div>
     `;
 
     e.classList.add("education");
 
     e.innerHTML = htmldata;
-    element.appendChild(e);
+    degrees.appendChild(e);
 
 }
