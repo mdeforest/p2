@@ -185,7 +185,7 @@ use Resume\MyForm;
                 </a>
                 <h2>Summary</h2>
                 <textarea placeholder='List here your top selling points, including your most relevant strengths, skills and core competencies'
-                          id='summary' name='summary'><?= $form['summary'] ?? '' ?></textarea>
+                          name='summary'><?= $form['summary'] ?? '' ?></textarea>
                 <span class='error'><?= getError('/.*summary.*/', $errors) ?></span>
                 <a href='#experience'>
                     <div class='arrow-down'></div>
@@ -268,7 +268,7 @@ use Resume\MyForm;
                     <div class='arrow-up'></div>
                 </a>
                 <h2>Choose Display Type</h2>
-                <select id='output' name='output'>
+                <select name='output'>
                     <option value='html' selected>HTML</option>
                     <option value='pdf'>PDF</option>
                 </select>
