@@ -8,7 +8,7 @@ function deleteDiv(element) {
 /*
  * Adds div of form data for experience in Resume
  */
-function addExperience(element) {
+function addExperience(arr = null, idx = null) {
     var experiences = document.getElementById('experiences');
     var e = document.createElement('div');
     var htmldata = `
@@ -18,16 +18,19 @@ function addExperience(element) {
         <div class='clearfix'></div>
         <fieldset>
             <label for='experience[jobTitle][]'>Job Title</label>
-            <input type='text' name='experience[jobTitle][]' value=''>
+            <span class='info'>Required</span>
+            <input type='text' name='experience[jobTitle][]' value='${arr ? arr['jobTitle'][idx] : ''}'>
         </fieldset>
         <fieldset>
             <label for='experience[company][]'>Company</label>
-            <input type='text' name='experience[company][]' value=''>
+            <span class='info'>Required</span>
+            <input type='text' name='experience[company][]' value='${arr ? arr['company'][idx] : ''}'>
         </fieldset>
         <div class='clearfix'></div>
         <fieldset>
             <label for='experience[location][]'>Location</label>
-            <input type='text' name='experience[location][]' value=''>
+            <span class='info'>Required</span>
+            <input type='text' name='experience[location][]' value='${arr ? arr['location'][idx] : ''}'>
         </fieldset> 
         <div class='clearfix'></div>
         <fieldset>
@@ -226,7 +229,8 @@ function addExperience(element) {
         <div class='clearfix'></div>
         <fieldset class='full-width'>
             <label for='experience[html-content][]'>Summary</label>
-            <textarea class='no-margin' placeholder='Describe your job responsibilities, accomplishments and technologies you have used' name='experience[html-content][]'></textarea>
+            <span class='info'>Required</span>
+            <textarea class='no-margin' placeholder='${arr ? arr['jobTitle'][idx] : 'Describe your job responsibilities, accomplishments and technologies you have used'}' name='experience[html-content][]'></textarea>
         </fieldset>
         <div class='clearfix'></div>
     `;
@@ -241,23 +245,26 @@ function addExperience(element) {
 /*
  * Adds div of form data for education in Resume
  */
-function addEducation() {
+function addEducation(arr = null) {
     var degrees = document.getElementById('degrees');
     var e = document.createElement('div');
     var htmldata = `
         <div class='button-container'>
-            <button type='button' onclick='deleteDiv(this.parentNode.parentNode)'>-</button>
+            <button type='button' class='button' onclick='deleteDiv(this.parentNode.parentNode)'>Remove</button>
         </div>
         <fieldset>
             <label for='education[degree][]'>Degree</label>
+            <span class='info'>Required</span>
             <input type='text' name='education[degree][]' value=''>
         </fieldset>
         <fieldset>
             <label for='education[where][]'>School</label>
+            <span class='info'>Required</span>
             <input type='text' name='education[where][]' value=''>
         </fieldset>
         <fieldset>
-            <label for='education[location][]'>Location</label>
+            <label for='education[location][]'>Location</label> 
+            <span class='info'>Required</span>
             <input type='text' name='education[location][]' value=''>
         </fieldset>     
         <fieldset>
@@ -421,12 +428,13 @@ function addEducation() {
         </fieldset>    
         <fieldset class='full-width'>
             <label for='education[html-content][]'>Summary</label>
+            <span class='info'>Required</span>
             <textarea class='no-margin' placeholder='(Optional) GPA, Awards, Honors' name='education[html-content][]'></textarea>
         </fieldset>
         <div class='clearfix'></div>
     `;
 
-    e.classList.add("education");
+    e.classList.add("degree");
 
     e.innerHTML = htmldata;
     degrees.appendChild(e);

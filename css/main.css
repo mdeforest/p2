@@ -16,7 +16,7 @@ html {
     overflow-y: hidden;
 }
 
-input[type=text], input[type=email], select {
+input[type=text], select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -33,12 +33,13 @@ input[type=text]:focus {
 
 label {
     display: block;
+    float: left;
     text-align: left !important;
     font-family: 'Slabo 27px', serif;
 }
 
 section {
-    height: 100vh;
+    height: 99vh;
     padding-top: 5vh;
     text-align: center;
 }
@@ -48,6 +49,21 @@ select {
     border-radius: 0;
 }
 
+span.error {
+    float: left;
+}
+
+span.error, span.info {
+    font-family: 'Slabo 27px', serif;
+    color: #cc0033;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+span.info {
+    float: right;
+}
+
 textarea {
     outline: none;
     resize: none;
@@ -55,7 +71,7 @@ textarea {
     display: block;
     margin: 0 auto;
     width: 90%;
-    height: 60vh;
+    height: 59vh;
 }
 
 .arrow-down {
@@ -95,6 +111,11 @@ textarea {
     height: 70vh;
     margin: auto;
     display: block;
+}
+
+.basic-info-content {
+    height: 57vh;
+    overflow-y: auto;
 }
 
 .button {
@@ -142,20 +163,32 @@ textarea {
     margin: 0 auto;
 }
 
-.experience, .education {
+.experience, .degree {
     border: 2px solid #465D89;
     margin-bottom: 3px;
 }
 
-.experience:last-child, .education:last-child {
+.experience:last-child, .degree:last-child {
     margin-bottom: 0;
+}
+
+.error-message {
+    background-color: #ff000059;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.error-message ul {
+    list-style: none;
+    font-family: 'Raleway', sans-serif;
 }
 
 .form {
     margin-top: 70px;
 }
 
-.form p {
+.form h2 {
     font-size: 4vh;
     padding-top: 2vh;
     padding-bottom: 2vh;
@@ -166,9 +199,17 @@ textarea {
     width: 94%;
 }
 
+.info::before {
+    content: "*";
+}
+
 .no-margin {
     margin: 0;
     width: 100%;
+}
+
+.no-padding {
+    padding: 0;
 }
 
 .template-img {
@@ -213,7 +254,7 @@ textarea {
 
 #experiences, #degrees {
     overflow-y: auto;
-    height: 60vh;
+    height: 50vh;
     margin: 5px;
 }
 
