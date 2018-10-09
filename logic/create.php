@@ -13,6 +13,8 @@ if ($form->isSubmitted()) {
     // set fields to be validated
     // experience and education must be done like this because they are at a deeper level
 
+    $_SESSION['form'] = $_POST;
+
     $fields =
         [
             'template' => 'required',
@@ -59,7 +61,7 @@ if ($form->isSubmitted()) {
     if ($form->hasErrors) {
         // There are errors so return back to index and display them
         $_SESSION['errors'] = $errors;
-        header('Location: ../index.php');
+        header('Location: ../index.php#choose-template');
         exit();
     }
 } else {
