@@ -10,10 +10,7 @@ use Resume\MyForm;
 ?>
 
 <!DOCTYPE html>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/html"
-      xmlns="http://www.w3.org/1999/html"
-      xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,7 +23,7 @@ use Resume\MyForm;
 <body>
 <div class='container'>
     <section class='banner' id='intro'>
-        <img src='images/logo.png'>
+        <h1><img src='images/logo.png' alt='Resume Creator Logo'></h1>
         <p id='instructions'>Create a Resume by choosing a template and filling out the required fields below</p>
         <div class='button-container'>
             <a class='button' href='#choose-template'>Let's Go!</a>
@@ -203,7 +200,7 @@ use Resume\MyForm;
                 <div class='button-container'>
                     <button type='button' class='button' onclick='addExperience()'>Add</button>
                 </div>
-                <?php if (isset($_SESSION['errors'])) : ?>
+                <?php if (isset($_SESSION['errors']) && count(preg_grep('/.*experience.*/', $_SESSION['errors'])) > 0) : ?>
                     <div class='error-message'>
                         <ul>
                             <?php foreach (preg_grep('/.*experience.*/', $_SESSION['errors']) as $error) : ?>
@@ -232,7 +229,7 @@ use Resume\MyForm;
                 <div class='button-container'>
                     <button type='button' class='button' onclick='addEducation()'>Add</button>
                 </div>
-                <?php if (isset($_SESSION['errors'])) : ?>
+                <?php if (isset($_SESSION['errors']) && count(preg_grep('/.*education.*/', $_SESSION['errors'])) > 0) : ?>
                     <div class='error-message'>
                         <ul>
                             <?php foreach (preg_grep('/.*education.*/', $_SESSION['errors']) as $error) : ?>
