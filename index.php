@@ -274,16 +274,6 @@ use Resume\MyForm;
         </section>
     </form>
 
-    <?php if (isset($_SESSION['errors'])) : ?>
-        <div>
-            <ul>
-                <?php foreach ($_SESSION['errors'] as $error) : ?>
-                    <li><?= $error ?></li>
-                <?php endforeach ?>
-            </ul>
-        </div>
-    <?php endif; ?>
-
     <?php $_SESSION['errors'] = null; ?>
     <?php $_SESSION['form'] = null; ?>
 </div>
