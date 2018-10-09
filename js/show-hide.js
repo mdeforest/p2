@@ -19,23 +19,23 @@ function addExperience(arr = null, idx = null) {
         <fieldset>
             <label for='experience[jobTitle][]'>Job Title</label>
             <span class='info'>Required</span>
-            <input type='text' name='experience[jobTitle][]' value='${arr ? arr['jobTitle'][idx] : ''}'>
+            <input type='text' id='experience[jobTitle][]' name='experience[jobTitle][]' value='${arr ? arr['jobTitle'][idx] : ''}'>
         </fieldset>
         <fieldset>
             <label for='experience[company][]'>Company</label>
             <span class='info'>Required</span>
-            <input type='text' name='experience[company][]' value='${arr ? arr['company'][idx] : ''}'>
+            <input type='text' id='experience[company][]' name='experience[company][]' value='${arr ? arr['company'][idx] : ''}'>
         </fieldset>
         <div class='clearfix'></div>
         <fieldset>
             <label for='experience[location][]'>Location</label>
             <span class='info'>Required</span>
-            <input type='text' name='experience[location][]' value='${arr ? arr['location'][idx] : ''}'>
+            <input type='text' id='experience[location][]' name='experience[location][]' value='${arr ? arr['location'][idx] : ''}'>
         </fieldset> 
         <div class='clearfix'></div>
         <fieldset>
             <label for='experience[fromMonth][]'>Month Start</label>
-            <select name='experience[fromMonth][]'>
+            <select id='experience[fromMonth][]' name='experience[fromMonth][]'>
                 <option value="Jan" selected>January</option>
                 <option value="Feb">February</option>
                 <option value="Mar">March</option>
@@ -52,7 +52,7 @@ function addExperience(arr = null, idx = null) {
         </fieldset>     
         <fieldset>
             <label for='experience[fromYear][]'>Year Start</label>
-            <select name='experience[fromYear][]'>
+            <select id='experience[fromYear][]' name='experience[fromYear][]' >
                 <option value="2018" selected>2018</option>
                 <option value="2017">2017</option>
                 <option value="2016">2016</option>
@@ -132,7 +132,7 @@ function addExperience(arr = null, idx = null) {
         <div class='clearfix'></div>   
         <fieldset>
             <label for='experience[toMonth][]'>Month End</label>
-            <select name='experience[toMonth][]'>
+            <select id='experience[toMonth][]' name='experience[toMonth][]'>
                 <option value="Jan" selected>January</option>
                 <option value="Feb">February</option>
                 <option value="Mar">March</option>
@@ -149,7 +149,7 @@ function addExperience(arr = null, idx = null) {
         </fieldset>     
         <fieldset>
             <label for='experience[toYear][]'>Year End</label>
-            <select name='experience[toYear][]'>
+            <select id='experience[toYear][]' name='experience[toYear][]'>
                 <option value="2018" selected>2018</option>
                 <option value="2017">2017</option>
                 <option value="2016">2016</option>
@@ -230,7 +230,7 @@ function addExperience(arr = null, idx = null) {
         <fieldset class='full-width'>
             <label for='experience[html-content][]'>Summary</label>
             <span class='info'>Required</span>
-            <textarea class='no-margin' placeholder='${arr ? arr['jobTitle'][idx] : 'Describe your job responsibilities, accomplishments and technologies you have used'}' name='experience[html-content][]'></textarea>
+            <textarea class='no-margin' placeholder='${arr ? arr['jobTitle'][idx] : 'Describe your job responsibilities, accomplishments and technologies you have used'}' id='experience[html-content][]' name='experience[html-content][]' ></textarea>
         </fieldset>
         <div class='clearfix'></div>
     `;
@@ -255,21 +255,21 @@ function addEducation(arr = null) {
         <fieldset>
             <label for='education[degree][]'>Degree</label>
             <span class='info'>Required</span>
-            <input type='text' name='education[degree][]' value=''>
+            <input type='text' id='education[degree][]' name='education[degree][]' value=''>
         </fieldset>
         <fieldset>
             <label for='education[where][]'>School</label>
             <span class='info'>Required</span>
-            <input type='text' name='education[where][]' value=''>
+            <input type='text' id='education[where][]' name='education[where][]' value=''>
         </fieldset>
         <fieldset>
             <label for='education[location][]'>Location</label> 
             <span class='info'>Required</span>
-            <input type='text' name='education[location][]' value=''>
+            <input type='text' id='education[location][]' name='education[location][]' value=''>
         </fieldset>     
         <fieldset>
             <label for='education[fromYear][]'>Year Start</label>
-            <select name='education[fromYear][]'>
+            <select id='education[fromYear][]' name='education[fromYear][]'>
                 <option value="2018" selected>2018</option>
                 <option value="2017">2017</option>
                 <option value="2016">2016</option>
@@ -348,7 +348,7 @@ function addEducation(arr = null) {
         </fieldset>   
         <fieldset>
             <label for='education[toYear][]'>Year End</label>
-            <select name='education[toYear][]'>
+            <select id='education[toYear][]' name='education[toYear][]'>
                 <option value="2018" selected>2018</option>
                 <option value='Present'>Present</option>
                 <option value="2017">2017</option>
@@ -429,7 +429,7 @@ function addEducation(arr = null) {
         <fieldset class='full-width'>
             <label for='education[html-content][]'>Summary</label>
             <span class='info'>Required</span>
-            <textarea class='no-margin' placeholder='(Optional) GPA, Awards, Honors' name='education[html-content][]'></textarea>
+            <textarea class='no-margin' placeholder='(Optional) GPA, Awards, Honors' id='education[html-content][]' name='education[html-content][]' ></textarea>
         </fieldset>
         <div class='clearfix'></div>
     `;

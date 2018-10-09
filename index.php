@@ -49,7 +49,7 @@ use Resume\MyForm;
                                id='temp-1'
                                value='temp-1' <?php echo isset($_SESSION['template']) && $_SESSION['template'] == 'temp-1' ? 'checked' : 'checked'; ?> >
                         <label for='temp-1'>
-                            <img class="template-img" src='templates/temp-1/temp-1.png'>
+                            <img class="template-img" src='templates/temp-1/temp-1.png' alt='Template 1'>
                         </label>
                     </div>
                     <div class='column'>
@@ -58,7 +58,7 @@ use Resume\MyForm;
                                id='temp-2'
                                value='temp-2' <?php echo isset($_SESSION['template']) && $_SESSION['template'] == 'temp-2' ? 'checked' : ''; ?> >
                         <label for='temp-2'>
-                            <img class="template-img" src='templates/temp-2/temp-2.png'>
+                            <img class="template-img" src='templates/temp-2/temp-2.png' alt='Template 2'>
                         </label>
                     </div>
                 </div>
@@ -75,32 +75,32 @@ use Resume\MyForm;
                     <fieldset>
                         <label for='firstName'>First Name</label>
                         <span class='info'>Required</span>
-                        <input type='text' name='firstName' value="<?= $form['firstName'] ?? '' ?>">
+                        <input type='text' id='firstName' name='firstName' value="<?= $form['firstName'] ?? '' ?>">
                         <span class='error'><?= getError('/.*firstName.*/', $errors) ?></span>
                     </fieldset>
                     <fieldset>
                         <label for='lastName'>Last Name</label>
                         <span class='info'>Required</span>
-                        <input type='text' name='lastName' value="<?= $form['lastName'] ?? '' ?>">
+                        <input type='text' id='lastName' name='lastName' value="<?= $form['lastName'] ?? '' ?>">
                         <span class='error'><?= getError('/.*lastName.*/', $errors) ?></span>
                     </fieldset>
                     <div class='clearfix'></div>
                     <fieldset>
                         <label for='jobTitle'>Profession</label>
                         <span class='info'>Required</span>
-                        <input type='text' name='jobTitle' value="<?= $form['jobTitle'] ?? '' ?>">
+                        <input type='text' id='jobTitle' name='jobTitle' value="<?= $form['jobTitle'] ?? '' ?>">
                         <span class='error'><?= getError('/.*jobTitle.*/', $errors) ?></span>
                     </fieldset>
                     <div class='clearfix'></div>
                     <fieldset>
                         <label for='city'>City</label>
                         <span class='info'>Required</span>
-                        <input type='text' name='city' value="<?= $form['city'] ?? '' ?>">
+                        <input type='text' id='city' name='city' value="<?= $form['city'] ?? '' ?>">
                         <span class='error'><?= getError('/.*city.*/', $errors) ?></span>
                     </fieldset>
                     <fieldset>
                         <label for='state'>State</label>
-                        <select name='state'>
+                        <select id='state' name='state'>
                             <option value="AL" selected>Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>
@@ -158,18 +158,18 @@ use Resume\MyForm;
                     <div class='clearfix'></div>
                     <fieldset>
                         <label for='email'>Email</label>
-                        <input type='text' name='email' value="<?= $form['email'] ?? '' ?>">
+                        <input type='text' id='email' name='email' value="<?= $form['email'] ?? '' ?>">
                         <span class='error'><?= getError('/.*email.*/', $errors) ?></span>
                     </fieldset>
                     <fieldset>
                         <label for='phoneNumber'>Phone Number</label>
-                        <input type='text' name='phoneNumber' value="<?= $form['phoneNumber'] ?? '' ?>">
+                        <input type='text' id='phoneNumber' name='phoneNumber' value="<?= $form['phoneNumber'] ?? '' ?>">
                         <span class='error'><?= getError('/.*phoneNumber.*/', $errors) ?></span>
                     </fieldset>
                     <div class='clearfix'></div>
                     <fieldset>
                         <label for='website'>Website</label>
-                        <input type='text' name='website' value="<?= $form['website'] ?? '' ?>">
+                        <input type='text' id='website' name='website' value="<?= $form['website'] ?? '' ?>">
                         <span class='error'><?= getError('/.*website.*/', $errors) ?></span>
                     </fieldset>
                     <div class='clearfix'></div>
@@ -185,7 +185,7 @@ use Resume\MyForm;
                 </a>
                 <h2>Summary</h2>
                 <textarea placeholder='List here your top selling points, including your most relevant strengths, skills and core competencies'
-                          name='summary'><?= $form['summary'] ?? '' ?></textarea>
+                          id='summary' name='summary'><?= $form['summary'] ?? '' ?></textarea>
                 <span class='error'><?= getError('/.*summary.*/', $errors) ?></span>
                 <a href='#experience'>
                     <div class='arrow-down'></div>
@@ -256,7 +256,7 @@ use Resume\MyForm;
                 </a>
                 <h2>Additional Information</h2>
                 <textarea placeholder='Include other relevant information that employers should know about. This may include activities, experiences and interests that you have that relate to the position you are trying to get'
-                          name='additionalInfo'><?= $form['additionalInfo'] ?? '' ?></textarea>
+                          id='additionalInfo' name='additionalInfo'><?= $form['additionalInfo'] ?? '' ?></textarea>
                 <span class='error'><?= getError('/.*additionalInfo.*/', $errors) ?></span>
                 <a href='#output'>
                     <div class='arrow-down'></div>
@@ -268,7 +268,7 @@ use Resume\MyForm;
                     <div class='arrow-up'></div>
                 </a>
                 <h2>Choose Display Type</h2>
-                <select name='output'>
+                <select id='output' name='output'>
                     <option value='html' selected>HTML</option>
                     <option value='pdf'>PDF</option>
                 </select>
