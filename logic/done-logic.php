@@ -36,7 +36,7 @@ foreach ($results as $key => $value) {
     $node = $xpath->query($query);
 
     foreach ($node as $item) {
-        $item->nodeValue = $value;
+        $item->nodeValue = htmlentities($value, ENT_QUOTES, "utf-8");
     }
 }
 
@@ -52,7 +52,7 @@ if (count($experience) == 0) {
         foreach ($experience[$i] as $key => $value) {
             $query = "(//div[@data-category='experience']//div//div//*[contains(concat(' ',normalize-space(@class),' '), ' " . $key . " ')])[last()]";
             $node = $xpath->query($query);
-            $node[0]->nodeValue = $value;
+            $node[0]->nodeValue = htmlentities($value, ENT_QUOTES, "utf-8");
         }
 
         $query = "(//div[@data-category='experience']//div//div[@data-category='experience'])[last()]";
@@ -79,7 +79,7 @@ if (count($education) == 0) {
         foreach ($education[$i] as $key => $value) {
             $query = "(//div[@data-category='education']//div//div//*[contains(concat(' ',normalize-space(@class),' '), ' " . $key . " ')])[last()]";
             $node = $xpath->query($query);
-            $node[0]->nodeValue = $value;
+            $node[0]->nodeValue = htmlentities($value, ENT_QUOTES, "utf-8");
         }
 
         $query = "(//div[@data-category='education']//div//div[@data-category='education'])[last()]";
