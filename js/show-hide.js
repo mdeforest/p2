@@ -245,7 +245,7 @@ function addExperience(arr = null, idx = null) {
 /*
  * Adds div of form data for education in Resume
  */
-function addEducation(arr = null) {
+function addEducation(arr = null, idx = null) {
     var degrees = document.getElementById('degrees');
     var e = document.createElement('div');
     var htmldata = `
@@ -255,17 +255,17 @@ function addEducation(arr = null) {
         <fieldset>
             <label for='education[degree][]'>Degree</label>
             <span class='info'>Required</span>
-            <input type='text' id='education[degree][]' name='education[degree][]' value=''>
+            <input type='text' id='education[degree][]' name='education[degree][]' value='${arr ? arr['degree'][idx] : ''}'>
         </fieldset>
         <fieldset>
             <label for='education[where][]'>School</label>
             <span class='info'>Required</span>
-            <input type='text' id='education[where][]' name='education[where][]' value=''>
+            <input type='text' id='education[where][]' name='education[where][]' value='${arr ? arr['where'][idx] : ''}'>
         </fieldset>
         <fieldset>
             <label for='education[location][]'>Location</label> 
             <span class='info'>Required</span>
-            <input type='text' id='education[location][]' name='education[location][]' value=''>
+            <input type='text' id='education[location][]' name='education[location][]' value='${arr ? arr['location'][idx] : ''}'>
         </fieldset>     
         <fieldset>
             <label for='education[fromYear][]'>Year Start</label>
@@ -429,7 +429,7 @@ function addEducation(arr = null) {
         <fieldset class='full-width'>
             <label for='education[html-content][]'>Summary</label>
             <span class='info'>Required</span>
-            <textarea class='no-margin' placeholder='(Optional) GPA, Awards, Honors' id='education[html-content][]' name='education[html-content][]' ></textarea>
+            <textarea class='no-margin' placeholder='${arr ? arr['jobTitle'][idx] : 'GPA, Awards, Honors'}' id='education[html-content][]' name='education[html-content][]' ></textarea>
         </fieldset>
         <div class='clearfix'></div>
     `;
