@@ -1,4 +1,5 @@
 <?php
+require 'vendor/autoload.php';
 require_once 'includes/Form.php';
 require_once 'includes/MyForm.php';
 
